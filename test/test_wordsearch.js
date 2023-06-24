@@ -35,4 +35,40 @@ describe("#wordSearch()", function() {
 
     assert.isTrue(result);
   });
+
+  it("should return false if the word search grid is empty", function() {
+    const result = wordSearch([], 'WORD');
+    assert.isFalse(result);
+  });
+
+  it("should return false if the word is an empty string", function() {
+    const result = wordSearch([
+      ['A', 'B', 'C'],
+      ['D', 'E', 'F'],
+      ['G', 'H', 'I']
+    ], '');
+    assert.isFalse(result);
+  });
+
+  it("should return true if the word is present vertically", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'LARRY')
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word search grid contains only the word", function() {
+    const result = wordSearch([
+      ['W', 'O', 'R', 'D']
+    ], 'WORD');
+    assert.isTrue(result);
+  });
 });
